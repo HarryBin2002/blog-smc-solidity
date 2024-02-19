@@ -1,0 +1,17 @@
+step1: 
+open a new terminal and type: ganache-cli to start local network with ganache
+
+step2:
+open a new other terminal to deploy truffle project into locally blockchain
+- truffle compile
+- truffle test --network ganache
+- truffle migrate --network ganache
+
+step3:
+type: truffle console to access screen to interact with blockchain
+let blog = await Blog.deployed()
+await blog.createPost("title1", "body1", {from: accounts[0]})
+let post = await blog.readPost(0)
+console.log(`ID: ${post[0].toString()}, Title: ${post[1]}, Body: ${post[2]}`)
+await blog.updatePost(0, "Updated Title", "Updated Body", {from: accounts[0]})
+await blog.deletePost(0, {from: accounts[0]})
